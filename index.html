@@ -15,7 +15,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-
         }
 
         .container {
@@ -24,31 +23,47 @@
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
             text-align: center;
             color: #0F2854;
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 20px;
+        }
 
+        .buttons {
+            text-align: center;
+            margin-bottom: 900px;
+        }
+
+        button {
+            font-family: 'Dancing Script', cursive;
+            background: #7F55B1;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1C4D8D;
         }
 
         .section {
             margin-bottom: 40px;
-
+            display: none; 
         }
 
         .letter {
             font-size: 1.2em;
             line-height: 1.6;
             text-align: justify;
-
-        }
-                .playlist {
-            text-align: center;
         }
 
         .playlist {
@@ -57,9 +72,9 @@
 
         .playlist h2 {
             font-family: 'Dancing Script', cursive;
-            color: #000000;
+            color: #0F2854;
+            font-size: 2em;
             margin-bottom: 20px;
-
         }
 
         iframe {
@@ -67,17 +82,21 @@
             width: 100%;
             max-width: 300px;
             height: 352px;
-
+            margin: 10px;
         }
-
     </style>
-
 </head>
 <body>
     <div class="container">
         <h1>In Case You Ever Wondered</h1>
         <center><p>i will try to make it less cringey :P</p></center>
-        <div class="section letter">
+        
+        <div class="buttons">
+            <button onclick="showSection('letter')">Where It Begins</button>
+            <button onclick="showSection('playlist')">A Quiet Loop</button>
+        </div>
+        
+        <div id="letter" class="section letter">
             <p>Deareast, Derick,</p>
             <p>You've been like sunlight through a cracked window—unexpected, warm, impossible to ignore. You didn't barge in or demand to be noticed; you simply arrived, and somehow the hallway felt different. Sometimes I catch myself tracing the edges of your presence, like I'm memorizing the shape of something I didn't know I was missing, something I didn't even realize I had been quietly hoping for.</p>
             <p>I'm usually fearless. I speak when I have the chance to, I move with certainty, I don’t make myself small.  But around you… something softens. The words stumble. My thoughts race ahead, rehearsed and ready, but my lips stay behind, unsure if they're allowed to follow. So I carry these small conversations meant only for you, tucked safely in my mind, replaying them when no one is watching. </p>
@@ -86,19 +105,31 @@
             <p>I don't know what will come of this, or where it could possibly lead. I don't know if this is meant to grow, or simply exist as something gentle and true for a season. But I do know I can't keep walking past your light without noticing it—without letting it reach me, even just a little. If you remember the last poem I wrote that was posted on The Junior Advocate page, “Still, It Grew,” I want to be honest: you were in my thoughts while I was writing it. Not literally, not as a story about us—but because the title itself speaks to my reason, I never expected to like someone again after a long season of choosing myself. </p>
             <p>I pray for you—often. For your safety, for your dreams, for your loved ones, even on days when I don't say your name out loud. I may not be able to complete the Misa de Gallo, but I still believe in alignment, in timing, in the possibility that the stars notice things we're afraid to say. I don't want this to remain unspoken forever. If I'm given the chance, I won't hide it. I'll let the world know that I felt something real.</p>
             <p>I may not be the woman in your dreams, the one you imagined before I sent you those reviewers back then. But I can be someone determined, someone sincere, someone who would choose you without hesitation, but with intention. I won't push or demand space in your life. I just want you to know that I'm here—open, honest, and willing. For you.</p>
-            <p>
             <p>Always,<br>J</p>
         </div>
 
-            <center><h2>For When the World Goes Quiet</h2> </center>
+        <div id="playlist" class="section playlist">
+            <center><h2>For When the World Goes Quiet</h2></center>
             <center><p>where my feelings get louder.</p></center>
-          <center><iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6sJEuUVScOpZXBCPhhlN43?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-          <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0WRmTCboTD6Aye5rKJibmT?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> </center>
-          
+            <center>
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6sJEuUVScOpZXBCPhhlN43?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0WRmTCboTD6Aye5rKJibmT?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </center>
         </div>
+    </div>
 
-
-    
-    
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.style.display = 'none');
+            
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
